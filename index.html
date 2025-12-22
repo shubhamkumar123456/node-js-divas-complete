@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">email</label>
+        <input id="email" type="email">
+        <label for="">Password</label>
+        <input id="password" type="password">
+        <button onclick="handleSubmit(event)">submit</button>
+    </form>
+
+    <script>
+        let email = document.getElementById('email'); //<input id="email" type="email">
+        let password = document.getElementById('password');
+
+        async function handleSubmit(e){
+            e.preventDefault()
+            // console.log("hello")
+            let obj = {
+                email:email.value,
+                password:password.value
+            }
+            console.log(obj)
+            let res = await fetch('http://localhost:8080/signup',{
+                method:'post',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(obj)
+            })
+
+            let data = await res.json();
+            console.log(data)
+        }
+
+    </script>
+</body>
+</html>
