@@ -18,7 +18,19 @@ async function userCollection() {
 
   return collection;
 }
+async function taskCollection() {
+  // Use connect method to connect to the server
+  await client.connect();
+  console.log('Connected successfully to server');
+  const db = client.db(dbName);
+  const collection = db.collection('tasks');
+
+  // the following code examples can be pasted here...
+
+  return collection;
+}
 
 export {
-    userCollection
+    userCollection,
+    taskCollection
 }

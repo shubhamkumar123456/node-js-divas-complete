@@ -101,8 +101,12 @@ const updateUser = async(req,res)=>{
     
 }
 
-const deleteUser = (req,res)=>{
-    res.send("delete function is running")
+const deleteUser = async(req,res)=>{
+    // res.send("delete function is running")
+    let {id} = req.params;
+    let collection = await userCollection()
+    let data = await collection.deleteOne({_id:new ObjectId(id)});
+    res.json({msg:"user deleted successfully"})
 }
 
 

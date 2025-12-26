@@ -3,7 +3,7 @@ const app = express();
 const port = 8080;
 import {userCollection} from './config/db.js'   //{userCOllection:function}
 import userRoutes from './routes/userRoutes.js';
-
+import taskRoutes from './routes/taskRoutes.js'
 
 
 app.use(express.json())//parse
@@ -14,6 +14,7 @@ app.get('/',(req,res)=>{
 
 
 app.use('/api/users' ,userRoutes)
+app.use('/api/tasks', taskRoutes)
 
 
 
